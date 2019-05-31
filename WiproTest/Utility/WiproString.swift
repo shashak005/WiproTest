@@ -16,4 +16,6 @@ let get = "GET".localized
 let rowsstr = "rows".localized
 let myCellStr = "MyCell".localized
 let noImage = "NoImage".localized
-    
+let baseUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json".localized
+
+

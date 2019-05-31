@@ -37,7 +37,7 @@ class ApiTestCases: XCTestCase {
         let timeoutInterval: TimeInterval = 30
         let getUrldataExpectation = expectation(description: "LDAP Authentication")
         
-        var request = URLRequest(url: URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!)
+        var request = URLRequest(url: URL(string: baseUrl)!)
         request.httpMethod = "GET"
         request.httpBody = try? JSONSerialization.data(withJSONObject: [:], options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

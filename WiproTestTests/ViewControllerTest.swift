@@ -42,7 +42,7 @@ class ViewControllerTest: XCTestCase,UITableViewDelegate {
     
     func testConfigureCell() {
         viewcontroller.viewDidLoad()
-        self.testCallURLForFetchData(urlStr:"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")
+        self.testCallURLForFetchData(urlStr:baseUrl)
 
         for (index, _) in ((viewcontroller.canadaDataModal).enumerated()) {
             let indexPath = IndexPath(row: index, section: 0)
@@ -77,7 +77,7 @@ class ViewControllerTest: XCTestCase,UITableViewDelegate {
         self.viewcontroller = viewcontroller1
         let _ = viewcontroller.view
         viewcontroller1.canadaTableView.delegate = self
- self.testCallURLForFetchData(urlStr:"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")
+ self.testCallURLForFetchData(urlStr:baseUrl)
     }
 
     
