@@ -15,7 +15,8 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     var dataArray  = [[String:Any]]()
     var canadaDataModal  = [CanadaDataModal]()
     var navigationtitle = ""
-    
+    var refreshControl = UIRefreshControl()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
@@ -28,10 +29,32 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         canadaTableView.sectionHeaderHeight = 1
         canadaTableView.delegate = self
         self.view.addSubview(canadaTableView)
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: Selector(("refresh:")), for: .valueChanged)
+        
+        canadaTableView.addSubview(refreshControl) // not required when using UITableViewController
         fetchDataFromUrl()
         
         // Do any additional setup after loading the view.
     }
+    func pullToRefresh(){
+        
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(handleTopRefresh(_:)), for: .valueChanged )
+        canadaTableView.addSubview(refresh)
+        
+    }
+    @objc func handleTopRefresh(_ sender:UIRefreshControl){
+        fetchDataFromUrl()
+    }
+
+    
+    
+    @objc func refresh(sender:AnyObject) {
+        fetchDataFromUrl()
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
     }
